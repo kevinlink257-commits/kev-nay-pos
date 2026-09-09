@@ -20,3 +20,4 @@ Thumbs.db
 # Backups
 *_original.*
 *_backup.*
+.vercel

@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/kev_nay_pos_barcode.html" }
+  ]
+}
