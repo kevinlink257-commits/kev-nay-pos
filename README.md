@@ -70,6 +70,14 @@ El sistema usa Supabase con las siguientes tablas:
 - `sales`: id, date, payment_method, customer_id, subtotal, discount, vat_amount, total, items_snapshot, paypal_order_id
 - `cash_closings`: initial_cash, total_sales, cash_sales, card_sales, paypal_sales, expected_cash, actual_cash, difference
 
+**Configuración inicial:**
+
+1. Ve a tu proyecto en [supabase.com](https://supabase.com/) → **SQL Editor**.
+2. Abre el archivo `schema.sql` de este repositorio.
+3. Pega el contenido en el SQL Editor y ejecútalo.
+4. Esto elimina las tablas existentes y crea las nuevas con el esquema actualizado (incluye columnas de PayPal).
+5. Se insertarán 3 productos de demostración automáticamente.
+
 ### Correo (EmailJS)
 
 1. Regístrate en [emailjs.com](https://www.emailjs.com/).
