@@ -1,12 +1,12 @@
 # Kev Nay - Sistema POS & Reportes Financieros Avanzados
 
-Sistema de punto de venta (POS) con códigos de barras, inventario, clientes, reportes financieros, login con roles, pagos por PayPal y envío de reportes por correo electrónico.
+Sistema de punto de venta (POS) 
 
 ## Características
 
 - **Sistema de Login con Roles**
-  - **Administrador** (`admin123`): control total del sistema — inventario, productos, clientes, reportes, configuración.
-  - **Cajero** (`cajero123`): ventas y cierre de caja, sin acceso a configuración ni inventario.
+  - **Administrador** : control total del sistema — inventario, productos, clientes, reportes, configuración.
+  - **Cajero** : ventas y cierre de caja, sin acceso a configuración ni inventario.
   - Las contraseñas se pueden cambiar desde el panel de Configuración.
 
 - **POS / Caja**
@@ -48,58 +48,6 @@ Sistema de punto de venta (POS) con códigos de barras, inventario, clientes, re
 - [EmailJS](https://www.emailjs.com/) (envío de correos)
 - [PayPal Smart Buttons](https://developer.paypal.com/) (pagos)
 - [FontAwesome](https://fontawesome.com/) (iconos)
-
-## Instalación
-
-1. Descarga `kev_nay_pos_barcode.html`.
-2. Ábrelo en tu navegador (Chrome, Firefox, Edge).
-3. Inicia sesión:
-   - **Admin**: usuario `Administrador`, contraseña `admin123`
-   - **Cajero**: usuario `Cajero`, contraseña `cajero123`
-
-No requiere servidor ni instalación local. Toda la configuración se guarda en `localStorage` del navegador.
-
-## Configuración
-
-### Base de datos (Supabase)
-
-El sistema usa Supabase con las siguientes tablas:
-
-- `products`: id, name, code, cost_price, price, stock, image_url
-- `customers`: id, name, phone, cedula, nit, address
-- `sales`: id, date, payment_method, customer_id, subtotal, discount, vat_amount, total, items_snapshot, paypal_order_id
-- `cash_closings`: initial_cash, total_sales, cash_sales, card_sales, paypal_sales, expected_cash, actual_cash, difference
-
-**Configuración inicial:**
-
-1. Ve a tu proyecto en [supabase.com](https://supabase.com/) → **SQL Editor**.
-2. Abre el archivo `schema.sql` de este repositorio.
-3. Pega el contenido en el SQL Editor y ejecútalo.
-4. Esto elimina las tablas existentes y crea las nuevas con el esquema actualizado (incluye columnas de PayPal).
-5. Se insertarán 3 productos de demostración automáticamente.
-
-### Correo (EmailJS)
-
-1. Regístrate en [emailjs.com](https://www.emailjs.com/).
-2. **Email Services** → Add New Service → conecta tu proveedor (Gmail, Outlook, etc.) → copia el **Service ID**.
-3. **Email Templates** → Create New Template. Usa estas variables en el cuerpo:
-   - `{{to_email}}` — correo destino
-   - `{{subject}}` — asunto
-   - `{{message}}` — contenido del reporte
-   - `{{total_ventas}}` — total facturado
-   - `{{fecha}}` — fecha del reporte
-   En el campo "To Email" del template pon `{{to_email}}`.
-4. **Account** → General → copia tu **Public Key**.
-5. En el POS: Configuración → pega Service ID, Template ID, Public Key y tu correo destino → Guardar.
-6. Usa "Enviar Correo de Prueba" para verificar.
-
-### PayPal
-
-1. Ve a [developer.paypal.com](https://developer.paypal.com/) → **Applications** → Create App.
-2. Nombra la app y selecciona **Sandbox** (pruebas) o **Live** (producción).
-3. Copia el **Client ID**.
-4. (Opcional) Crea cuentas sandbox de comprador en **Sandbox → Accounts** para probar.
-5. En el POS: Configuración → pega el Client ID y selecciona el modo → Guardar.
 
 ## Uso
 
